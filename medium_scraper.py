@@ -26,7 +26,8 @@ class MediumScraper:
         # Uncomment to run headless (faster but harder to debug)
         # options.add_argument('--headless')
         
-        self.driver = uc.Chrome(options=options)
+        # Fix for version mismatch (Browser is 142, Driver was defaulting to 143)
+        self.driver = uc.Chrome(options=options, version_main=142)
         self.driver.set_page_load_timeout(30)
         
     def get_scraped_urls(self):
